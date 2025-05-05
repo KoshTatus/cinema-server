@@ -282,8 +282,8 @@ def get_seats_for_session(
             SeatsOrm,
             seat_order_subquery.label("is_available")
         )
-        .join(SessionsOrm, SessionsOrm.hall_id == SeatsOrm.hall_id)  # Связываем места с залами через сеансы
-        .filter(SessionsOrm.id == session_id)  # Фильтруем по конкретному сеансу
+        .join(SessionsOrm, SessionsOrm.hall_id == SeatsOrm.hall_id)
+        .filter(SessionsOrm.id == session_id)
         .order_by(SeatsOrm.seat_number, SeatsOrm.row_number)
     )
 
